@@ -1,0 +1,951 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="evergreenfeedback_androidModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.7" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="adminmaster">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AdminName" Type="varchar" MaxLength="150" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+          <Property Name="AdminEmailId" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="advancemaster">
+          <Key>
+            <PropertyRef Name="AdvanceId" />
+          </Key>
+          <Property Name="AdvanceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="15" />
+          <Property Name="AdvancePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="answermaster">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Answer" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="badfeedbacksmsmaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="100" />
+          <Property Name="MobileNo" Type="varchar" MaxLength="45" />
+          <Property Name="IsActive" Type="varchar" MaxLength="1" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="categorymaster">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryName" Type="varchar" MaxLength="200" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="chargemaster">
+          <Key>
+            <PropertyRef Name="ChargeId" />
+          </Key>
+          <Property Name="ChargeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DecorationCharge" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="EventFee" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customercategorymaster">
+          <Key>
+            <PropertyRef Name="CustomerCategoryId" />
+          </Key>
+          <Property Name="CustomerCategoryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="15" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customereventmaster">
+          <Key>
+            <PropertyRef Name="CustomerEventId" />
+          </Key>
+          <Property Name="CustomerEventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="Gathering" Type="int" />
+          <Property Name="Comment" Type="varchar" MaxLength="500" />
+          <Property Name="EventDate" Type="datetime" Precision="0" />
+          <Property Name="Time" Type="varchar" MaxLength="45" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerextramaster">
+          <Key>
+            <PropertyRef Name="CustomerExtraId" />
+          </Key>
+          <Property Name="CustomerExtraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExtraId" Type="int" />
+          <Property Name="ExtraCharges" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="15" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerextraproductmaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="45" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customermaster">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerName" Type="varchar" MaxLength="150" />
+          <Property Name="PhoneNumber" Type="varchar" MaxLength="15" />
+          <Property Name="CustomerEmailId" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="AdminId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerordermaster">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="MenuId" Type="int" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="15" />
+          <Property Name="CustomerPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="EventFee" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Discount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DiscountPercent" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="DiscountValue" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AdvancePrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Total" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="GrandTotal" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="NetPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerproductmaster">
+          <Key>
+            <PropertyRef Name="CustomerProductId" />
+          </Key>
+          <Property Name="CustomerProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductId" Type="int" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="OrderNumber" Type="varchar" MaxLength="15" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="eventmaster">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="EventName" Type="varchar" MaxLength="200" />
+          <Property Name="EventPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="extrachargemaster">
+          <Key>
+            <PropertyRef Name="ExtraId" />
+          </Key>
+          <Property Name="ExtraId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ExtraName" Type="varchar" MaxLength="200" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="feedbackmaster">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="QuestionId" Type="int" />
+          <Property Name="AnswerId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="menumaster">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MenuName" Type="varchar" MaxLength="500" />
+          <Property Name="MenuPrice" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="menusetupmaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="menuid" Type="int" />
+          <Property Name="categoryid" Type="int" />
+          <Property Name="Productid" Type="int" />
+          <Property Name="createdon" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ordermaster">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TotalAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="OfferAmount" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="OrderDetailsId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="productmaster">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductName" Type="varchar" MaxLength="200" />
+          <Property Name="Price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="CategoryId" Type="int" />
+          <Property Name="FoodType" Type="varchar" MaxLength="1" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="questionmaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PositionId" Type="int" />
+          <Property Name="Question" Type="varchar" MaxLength="500" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="varchar" MaxLength="1" />
+        </EntityType>
+        <EntityType Name="remarksmaster">
+          <Key>
+            <PropertyRef Name="RemarksId" />
+          </Key>
+          <Property Name="RemarksId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CustomerId" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="Remarks" Type="varchar" MaxLength="500" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="storemaster">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StoreName" Type="varchar" MaxLength="150" />
+          <Property Name="StorePhoneNumber" Type="varchar" MaxLength="45" />
+          <Property Name="StoreEmailId" Type="varchar" MaxLength="50" />
+          <Property Name="StoreAddress" Type="varchar" MaxLength="200" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="usermaster">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="150" />
+          <Property Name="Password" Type="varchar" MaxLength="45" />
+          <Property Name="EmailId" Type="varchar" MaxLength="50" />
+          <Property Name="Role" Type="int" />
+          <Property Name="StoreId" Type="int" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="website_login">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FisrtName" Type="varchar" MaxLength="100" />
+          <Property Name="LastName" Type="varchar" MaxLength="100" />
+          <Property Name="UserName" Type="varchar" MaxLength="200" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="IsActive" Type="varchar" MaxLength="1" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="evergreenfeedback_androidModelStoreContainer">
+          <EntitySet Name="adminmaster" EntityType="Self.adminmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="advancemaster" EntityType="Self.advancemaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="answermaster" EntityType="Self.answermaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="badfeedbacksmsmaster" EntityType="Self.badfeedbacksmsmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="categorymaster" EntityType="Self.categorymaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="chargemaster" EntityType="Self.chargemaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customercategorymaster" EntityType="Self.customercategorymaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customereventmaster" EntityType="Self.customereventmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customerextramaster" EntityType="Self.customerextramaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customerextraproductmaster" EntityType="Self.customerextraproductmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customermaster" EntityType="Self.customermaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customerordermaster" EntityType="Self.customerordermaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="customerproductmaster" EntityType="Self.customerproductmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="eventmaster" EntityType="Self.eventmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="extrachargemaster" EntityType="Self.extrachargemaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="feedbackmaster" EntityType="Self.feedbackmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="menumaster" EntityType="Self.menumaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="menusetupmaster" EntityType="Self.menusetupmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="ordermaster" EntityType="Self.ordermaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="productmaster" EntityType="Self.productmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="questionmaster" EntityType="Self.questionmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="remarksmaster" EntityType="Self.remarksmaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="storemaster" EntityType="Self.storemaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="usermaster" EntityType="Self.usermaster" Schema="evergreenfeedback_android" store:Type="Tables" />
+          <EntitySet Name="website_login" EntityType="Self.website_login" Schema="evergreenfeedback_android" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="evergreenfeedback_androidModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="adminmaster">
+          <Key>
+            <PropertyRef Name="AdminId" />
+          </Key>
+          <Property Name="AdminId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AdminName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AdminEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="advancemaster">
+          <Key>
+            <PropertyRef Name="AdvanceId" />
+          </Key>
+          <Property Name="AdvanceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="AdvancePrice" Type="Decimal" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="answermaster">
+          <Key>
+            <PropertyRef Name="AnswerId" />
+          </Key>
+          <Property Name="AnswerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Answer" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="categorymaster">
+          <Key>
+            <PropertyRef Name="CategoryId" />
+          </Key>
+          <Property Name="CategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="chargemaster">
+          <Key>
+            <PropertyRef Name="ChargeId" />
+          </Key>
+          <Property Name="ChargeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DecorationCharge" Type="Decimal" />
+          <Property Name="Discount" Type="Decimal" />
+          <Property Name="EventFee" Type="Decimal" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customercategorymaster">
+          <Key>
+            <PropertyRef Name="CustomerCategoryId" />
+          </Key>
+          <Property Name="CustomerCategoryId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customereventmaster">
+          <Key>
+            <PropertyRef Name="CustomerEventId" />
+          </Key>
+          <Property Name="CustomerEventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="Gathering" Type="Int32" />
+          <Property Name="Comment" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EventDate" Type="DateTime" />
+          <Property Name="Time" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerextramaster">
+          <Key>
+            <PropertyRef Name="CustomerExtraId" />
+          </Key>
+          <Property Name="CustomerExtraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExtraId" Type="Int32" />
+          <Property Name="ExtraCharges" Type="Decimal" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerextraproductmaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="OrderNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customermaster">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="AdminId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerordermaster">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="MenuId" Type="Int32" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CustomerPrice" Type="Decimal" />
+          <Property Name="EventFee" Type="Decimal" />
+          <Property Name="Discount" Type="Decimal" />
+          <Property Name="DiscountPercent" Type="Decimal" />
+          <Property Name="DiscountValue" Type="Decimal" />
+          <Property Name="AdvancePrice" Type="Decimal" />
+          <Property Name="Total" Type="Decimal" />
+          <Property Name="GrandTotal" Type="Decimal" />
+          <Property Name="NetPrice" Type="Decimal" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="customerproductmaster">
+          <Key>
+            <PropertyRef Name="CustomerProductId" />
+          </Key>
+          <Property Name="CustomerProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductId" Type="Int32" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="OrderNumber" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="eventmaster">
+          <Key>
+            <PropertyRef Name="EventId" />
+          </Key>
+          <Property Name="EventId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="EventName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EventPrice" Type="Decimal" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="extrachargemaster">
+          <Key>
+            <PropertyRef Name="ExtraId" />
+          </Key>
+          <Property Name="ExtraId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ExtraName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="feedbackmaster">
+          <Key>
+            <PropertyRef Name="FeedbackId" />
+          </Key>
+          <Property Name="FeedbackId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="QuestionId" Type="Int32" />
+          <Property Name="AnswerId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="menumaster">
+          <Key>
+            <PropertyRef Name="MenuId" />
+          </Key>
+          <Property Name="MenuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MenuName" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="MenuPrice" Type="Decimal" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="menusetupmaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="menuid" Type="Int32" />
+          <Property Name="categoryid" Type="Int32" />
+          <Property Name="Productid" Type="Int32" />
+          <Property Name="createdon" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="ordermaster">
+          <Key>
+            <PropertyRef Name="OrderId" />
+          </Key>
+          <Property Name="OrderId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TotalAmount" Type="Decimal" />
+          <Property Name="OfferAmount" Type="Decimal" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="OrderDetailsId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="productmaster">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Price" Type="Decimal" />
+          <Property Name="CategoryId" Type="Int32" />
+          <Property Name="FoodType" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="remarksmaster">
+          <Key>
+            <PropertyRef Name="RemarksId" />
+          </Key>
+          <Property Name="RemarksId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerId" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="Remarks" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="storemaster">
+          <Key>
+            <PropertyRef Name="StoreId" />
+          </Key>
+          <Property Name="StoreId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StoreName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="StorePhoneNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="StoreEmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StoreAddress" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="usermaster">
+          <Key>
+            <PropertyRef Name="LoginId" />
+          </Key>
+          <Property Name="LoginId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserName" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="EmailId" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Role" Type="Int32" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="website_login">
+          <Key>
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="UserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FisrtName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="LastName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UserName" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityContainer Name="evergreenfeedback_androidEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="adminmasters" EntityType="Self.adminmaster" />
+          <EntitySet Name="advancemasters" EntityType="Self.advancemaster" />
+          <EntitySet Name="answermasters" EntityType="Self.answermaster" />
+          <EntitySet Name="categorymasters" EntityType="Self.categorymaster" />
+          <EntitySet Name="chargemasters" EntityType="Self.chargemaster" />
+          <EntitySet Name="customercategorymasters" EntityType="Self.customercategorymaster" />
+          <EntitySet Name="customereventmasters" EntityType="Self.customereventmaster" />
+          <EntitySet Name="customerextramasters" EntityType="Self.customerextramaster" />
+          <EntitySet Name="customerextraproductmasters" EntityType="Self.customerextraproductmaster" />
+          <EntitySet Name="customermasters" EntityType="Self.customermaster" />
+          <EntitySet Name="customerordermasters" EntityType="Self.customerordermaster" />
+          <EntitySet Name="customerproductmasters" EntityType="Self.customerproductmaster" />
+          <EntitySet Name="eventmasters" EntityType="Self.eventmaster" />
+          <EntitySet Name="extrachargemasters" EntityType="Self.extrachargemaster" />
+          <EntitySet Name="feedbackmasters" EntityType="Self.feedbackmaster" />
+          <EntitySet Name="menumasters" EntityType="Self.menumaster" />
+          <EntitySet Name="menusetupmasters" EntityType="Self.menusetupmaster" />
+          <EntitySet Name="ordermasters" EntityType="Self.ordermaster" />
+          <EntitySet Name="productmasters" EntityType="Self.productmaster" />
+          <EntitySet Name="remarksmasters" EntityType="Self.remarksmaster" />
+          <EntitySet Name="storemasters" EntityType="Self.storemaster" />
+          <EntitySet Name="usermasters" EntityType="Self.usermaster" />
+          <EntitySet Name="website_login" EntityType="Self.website_login" />
+          <EntitySet Name="badfeedbacksmsmasters" EntityType="evergreenfeedback_androidModel.badfeedbacksmsmaster" />
+          <EntitySet Name="questionmasters" EntityType="evergreenfeedback_androidModel.questionmaster" />
+        </EntityContainer>
+        <EntityType Name="badfeedbacksmsmaster">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="MobileNo" Type="String" MaxLength="45" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="questionmaster">
+          <Key>
+            <PropertyRef Name="id" />
+          </Key>
+          <Property Name="id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PositionId" Type="Int32" />
+          <Property Name="Question" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="StoreId" Type="Int32" />
+          <Property Name="CreatedOn" Type="DateTime" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsActive" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="evergreenfeedback_androidModelStoreContainer" CdmEntityContainer="evergreenfeedback_androidEntities">
+          <EntitySetMapping Name="adminmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.adminmaster">
+              <MappingFragment StoreEntitySet="adminmaster">
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="AdminEmailId" ColumnName="AdminEmailId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="advancemasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.advancemaster">
+              <MappingFragment StoreEntitySet="advancemaster">
+                <ScalarProperty Name="AdvanceId" ColumnName="AdvanceId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="AdvancePrice" ColumnName="AdvancePrice" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="answermasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.answermaster">
+              <MappingFragment StoreEntitySet="answermaster">
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="Answer" ColumnName="Answer" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="categorymasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.categorymaster">
+              <MappingFragment StoreEntitySet="categorymaster">
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="CategoryName" ColumnName="CategoryName" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="chargemasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.chargemaster">
+              <MappingFragment StoreEntitySet="chargemaster">
+                <ScalarProperty Name="ChargeId" ColumnName="ChargeId" />
+                <ScalarProperty Name="DecorationCharge" ColumnName="DecorationCharge" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="EventFee" ColumnName="EventFee" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customercategorymasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customercategorymaster">
+              <MappingFragment StoreEntitySet="customercategorymaster">
+                <ScalarProperty Name="CustomerCategoryId" ColumnName="CustomerCategoryId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customereventmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customereventmaster">
+              <MappingFragment StoreEntitySet="customereventmaster">
+                <ScalarProperty Name="CustomerEventId" ColumnName="CustomerEventId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="Gathering" ColumnName="Gathering" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="Time" ColumnName="Time" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerextramasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customerextramaster">
+              <MappingFragment StoreEntitySet="customerextramaster">
+                <ScalarProperty Name="CustomerExtraId" ColumnName="CustomerExtraId" />
+                <ScalarProperty Name="ExtraId" ColumnName="ExtraId" />
+                <ScalarProperty Name="ExtraCharges" ColumnName="ExtraCharges" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerextraproductmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customerextraproductmaster">
+              <MappingFragment StoreEntitySet="customerextraproductmaster">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customermasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customermaster">
+              <MappingFragment StoreEntitySet="customermaster">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="CustomerEmailId" ColumnName="CustomerEmailId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="AdminId" ColumnName="AdminId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerordermasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customerordermaster">
+              <MappingFragment StoreEntitySet="customerordermaster">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CustomerPrice" ColumnName="CustomerPrice" />
+                <ScalarProperty Name="EventFee" ColumnName="EventFee" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="DiscountPercent" ColumnName="DiscountPercent" />
+                <ScalarProperty Name="DiscountValue" ColumnName="DiscountValue" />
+                <ScalarProperty Name="AdvancePrice" ColumnName="AdvancePrice" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="GrandTotal" ColumnName="GrandTotal" />
+                <ScalarProperty Name="NetPrice" ColumnName="NetPrice" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="customerproductmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.customerproductmaster">
+              <MappingFragment StoreEntitySet="customerproductmaster">
+                <ScalarProperty Name="CustomerProductId" ColumnName="CustomerProductId" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="OrderNumber" ColumnName="OrderNumber" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="eventmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.eventmaster">
+              <MappingFragment StoreEntitySet="eventmaster">
+                <ScalarProperty Name="EventId" ColumnName="EventId" />
+                <ScalarProperty Name="EventName" ColumnName="EventName" />
+                <ScalarProperty Name="EventPrice" ColumnName="EventPrice" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="extrachargemasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.extrachargemaster">
+              <MappingFragment StoreEntitySet="extrachargemaster">
+                <ScalarProperty Name="ExtraId" ColumnName="ExtraId" />
+                <ScalarProperty Name="ExtraName" ColumnName="ExtraName" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="feedbackmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.feedbackmaster">
+              <MappingFragment StoreEntitySet="feedbackmaster">
+                <ScalarProperty Name="FeedbackId" ColumnName="FeedbackId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="QuestionId" ColumnName="QuestionId" />
+                <ScalarProperty Name="AnswerId" ColumnName="AnswerId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menumasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.menumaster">
+              <MappingFragment StoreEntitySet="menumaster">
+                <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+                <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+                <ScalarProperty Name="MenuPrice" ColumnName="MenuPrice" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="menusetupmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.menusetupmaster">
+              <MappingFragment StoreEntitySet="menusetupmaster">
+                <ScalarProperty Name="id" ColumnName="id" />
+                <ScalarProperty Name="menuid" ColumnName="menuid" />
+                <ScalarProperty Name="categoryid" ColumnName="categoryid" />
+                <ScalarProperty Name="Productid" ColumnName="Productid" />
+                <ScalarProperty Name="createdon" ColumnName="createdon" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ordermasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.ordermaster">
+              <MappingFragment StoreEntitySet="ordermaster">
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="TotalAmount" ColumnName="TotalAmount" />
+                <ScalarProperty Name="OfferAmount" ColumnName="OfferAmount" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="OrderDetailsId" ColumnName="OrderDetailsId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="productmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.productmaster">
+              <MappingFragment StoreEntitySet="productmaster">
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="FoodType" ColumnName="FoodType" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="remarksmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.remarksmaster">
+              <MappingFragment StoreEntitySet="remarksmaster">
+                <ScalarProperty Name="RemarksId" ColumnName="RemarksId" />
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="Remarks" ColumnName="Remarks" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="storemasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.storemaster">
+              <MappingFragment StoreEntitySet="storemaster">
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="StoreName" ColumnName="StoreName" />
+                <ScalarProperty Name="StorePhoneNumber" ColumnName="StorePhoneNumber" />
+                <ScalarProperty Name="StoreEmailId" ColumnName="StoreEmailId" />
+                <ScalarProperty Name="StoreAddress" ColumnName="StoreAddress" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usermasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.usermaster">
+              <MappingFragment StoreEntitySet="usermaster">
+                <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="EmailId" ColumnName="EmailId" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="website_login">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.website_login">
+              <MappingFragment StoreEntitySet="website_login">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="FisrtName" ColumnName="FisrtName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="badfeedbacksmsmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.badfeedbacksmsmaster">
+              <MappingFragment StoreEntitySet="badfeedbacksmsmaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="MobileNo" ColumnName="MobileNo" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="questionmasters">
+            <EntityTypeMapping TypeName="evergreenfeedback_androidModel.questionmaster">
+              <MappingFragment StoreEntitySet="questionmaster">
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="StoreId" ColumnName="StoreId" />
+                <ScalarProperty Name="Question" ColumnName="Question" />
+                <ScalarProperty Name="PositionId" ColumnName="PositionId" />
+                <ScalarProperty Name="id" ColumnName="id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

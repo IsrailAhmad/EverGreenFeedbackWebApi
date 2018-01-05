@@ -1,0 +1,46 @@
+﻿<div class="jumbotron">
+    <h1>EverGreen Feedback WebApi </h1>
+</div>
+<script src="~/Scripts/jquery-3.2.1.js"></script>
+<script>
+    var load = function () {        
+        var today = new Date();
+        var dd = today.getDate();
+        var mm = today.getMonth() + 1; //January is 0!
+
+        var yyyy = today.getFullYear();
+        if (dd < 10) {
+            dd = '0' + dd;
+        }
+        if (mm < 10) {
+            mm = '0' + mm;
+        }
+        var today = yyyy + '/' + mm + '/' + dd;
+        var qry = {
+            Date: today
+        }
+        $.ajax({
+            url: "http://localhost:51673/api/Event/AutoSmsOnADay",
+            type: "GET",
+            data: qry,
+            contentType: "application/json;charset=utf-8",
+            dataType: "JSON",
+            success: function (result) {
+
+            },
+            error: function (errormessage) {
+                //alert(errormessage.responseText);
+            }
+        });
+    };
+
+    var now = new Date();
+    var millisTill10 = new Date(now.getFullYear(), now.getMonth(), now.getDate(), 21, 30, 0, 0) - now;
+    if (millisTill10 < 0) {
+        millisTill10 += 86400000; // it's after 10am, try 10am tomorrow.
+    }
+    setTimeout(function () {
+        alert('Hi');
+        load();
+    }, millisTill10);
+</script>
